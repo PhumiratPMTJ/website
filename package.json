@@ -1,0 +1,17 @@
+{
+  "name": "ออกกำลังกายพาเพลิน",
+  "version": "1.0.0",
+  "description": "เว็บไซต์โปรแกรมออกกำลังกายและคำนวณ BMI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "fitness",
+    "bmi",
+    "exercise"
+  ],
+  "author": "",
+  "license": "ISC"
+}

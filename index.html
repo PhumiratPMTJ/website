@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ออกกำลังกายพาเพลิน - คำนวณ BMI และโปรแกรมออกกำลังกายเพื่อสุขภาพ</title>
+    <meta name="description" content="ตัวช่วยคำนวณค่า BMI อัจฉริยะ พร้อมคำแนะนำและโปรแกรมออกกำลังกายที่ออกแบบมาเพื่อคุณโดยเฉพาะ สนุก ปลอดภัย ได้สุขภาพดีกับออกกำลังกายพาเพลิน">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header id="main-header">
+        <div class="container nav-container">
+            <a href="#" class="logo" id="logo-link">
+                <i class="fa-solid fa-dumbbell logo-icon"></i>
+                <span class="logo-text">ออกกำลังกาย<span>พาเพลิน</span></span>
+            </a>
+            
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="#hero-section" class="nav-link active" id="nav-home">หน้าแรก</a></li>
+                    <li><a href="#bmi-section" class="nav-link" id="nav-bmi">คำนวณ BMI</a></li>
+                    <li><a href="#workout-section" class="nav-link" id="nav-workouts">ท่าออกกำลังกาย</a></li>
+                    <li><a href="#tips-section" class="nav-link" id="nav-tips">เคล็ดลับสุขภาพ</a></li>
+                </ul>
+            </nav>
+
+            <div class="mobile-toggle" id="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="hero-section" class="hero">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-fire-flame-curved"></i> สุขภาพดีเริ่มต้นที่ความสนุก
+                </div>
+                <h1 class="hero-title">ฟิตร่างกายให้เฟิร์ม<br>เติมพลังบวกไปกับ <span class="highlight">ออกกำลังกายพาเพลิน</span></h1>
+                <p class="hero-subtitle">ค้นหาดัชนีมวลกาย (BMI) ของคุณในคลิกเดียว พร้อมรับคำแนะนำและโปรแกรมการออกกำลังกายที่เหมาะสม สนุกสนาน และทำตามได้ง่ายๆ ที่บ้าน!</p>
+                <div class="hero-actions">
+                    <a href="#bmi-section" class="btn btn-primary" id="hero-cta-bmi">
+                        <i class="fa-solid fa-calculator"></i> คำนวณ BMI เลย
+                    </a>
+                    <a href="#workout-section" class="btn btn-secondary" id="hero-cta-workout">
+                        <i class="fa-solid fa-play"></i> เริ่มออกกำลังกาย
+                    </a>
+                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <a href="#bmi-section"><i class="fa-solid fa-chevron-down"></i></a>
+            </div>
+        </section>
+
+        <!-- BMI Calculator Section -->
+        <section id="bmi-section" class="bmi-calc">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tagline">Health Assessment</span>
+                    <h2 class="section-title">วิเคราะห์ความฟิตของคุณ</h2>
+                    <p class="section-desc">กรอกข้อมูลน้ำหนักและส่วนสูงของคุณ เพื่อเช็คระดับดัชนีมวลกาย (BMI) และรับคำแนะนำการดูแลสุขภาพเฉพาะบุคคล</p>
+                </div>
+
+                <div class="bmi-grid">
+                    <!-- Calculator Form Card -->
+                    <div class="bmi-card bmi-input-card">
+                        <h3><i class="fa-solid fa-heart-pulse"></i> ข้อมูลร่างกาย</h3>
+                        <form id="bmi-form" novalidate>
+                            <div class="form-group">
+                                <label for="weight">น้ำหนักของคุณ (กิโลกรัม)</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-weight-scale input-icon"></i>
+                                    <input type="number" id="weight" placeholder="เช่น 65.5" required min="10" max="300" step="0.1">
+                                    <span class="input-unit">กก.</span>
+                                </div>
+                                <span class="error-msg" id="weight-error">โปรดระบุน้ำหนักที่ถูกต้อง (10 - 300 กก.)</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="height">ส่วนสูงของคุณ (เซนติเมตร)</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-ruler-vertical input-icon"></i>
+                                    <input type="number" id="height" placeholder="เช่น 170" required min="50" max="250" step="1">
+                                    <span class="input-unit">ซม.</span>
+                                </div>
+                                <span class="error-msg" id="height-error">โปรดระบุส่วนสูงที่ถูกต้อง (50 - 250 ซม.)</span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" id="btn-calculate">
+                                <i class="fa-solid fa-arrows-rotate"></i> คำนวณผลและวิเคราะห์
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Calculator Results Card -->
+                    <div class="bmi-card bmi-result-card" id="bmi-result-panel">
+                        <!-- Initial view -->
+                        <div class="result-placeholder" id="result-placeholder">
+                            <div class="placeholder-icon-wrapper">
+                                <i class="fa-solid fa-chart-simple placeholder-icon"></i>
+                            </div>
+                            <h4>รอผลวิเคราะห์ของคุณ</h4>
+                            <p>กรอกข้อมูลและกดปุ่มคำนวณด้านซ้าย เพื่อดูค่า BMI และโปรแกรมออกกำลังกายที่เหมาะสม</p>
+                        </div>
+
+                        <!-- Real results (hidden by default) -->
+                        <div class="result-display hidden" id="result-display">
+                            <h3>ผลลัพธ์การวิเคราะห์ BMI</h3>
+                            <div class="gauge-container">
+                                <div class="gauge">
+                                    <div class="gauge-body">
+                                        <div class="gauge-fill" id="gauge-fill"></div>
+                                        <div class="gauge-cover">
+                                            <span class="bmi-value" id="bmi-value-text">22.5</span>
+                                            <span class="bmi-label">ค่า BMI</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bmi-status" id="bmi-status-badge">น้ำหนักปกติ (สุขภาพดี)</div>
+                            
+                            <div class="bmi-explanation">
+                                <p id="bmi-desc-text">คุณมีน้ำหนักตัวที่สมดุลดีแล้ว การคงระดับนี้ไว้จะช่วยลดความเสี่ยงปัญหาสุขภาพเรื้อรังได้ดีที่สุด</p>
+                            </div>
+
+                            <div class="recommendation-box">
+                                <h5><i class="fa-solid fa-dumbbell"></i> แนะนำสำหรับการออกกำลังกาย:</h5>
+                                <p id="bmi-exercise-rec">ควรเน้นการรักษาความฟิตด้วย คาร์ดิโอสลับฝึกความแข็งแรง (Strength) เช่น เดินเร็ว ปั่นจักรยาน วิดพื้น สัปดาห์ละ 150 นาที</p>
+                                
+                                <h5><i class="fa-solid fa-apple-whole"></i> แนะนำด้านโภชนาการ:</h5>
+                                <p id="bmi-diet-rec">เน้นทานอาหารที่มีสารอาหารครบ 5 หมู่ ควบคุมพลังงานให้สมดุล หลีกเลี่ยงน้ำหวานและอาหารไขมันสูง</p>
+                            </div>
+                            
+                            <div class="action-btn-group">
+                                <button class="btn btn-outline" id="btn-recalc">
+                                    <i class="fa-solid fa-arrow-rotate-left"></i> คำนวณใหม่
+                                </button>
+                                <a href="#workout-section" class="btn btn-secondary" id="btn-go-workout">
+                                    ไปที่ท่าแนะนำ <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workout Library Section -->
+        <section id="workout-section" class="workouts">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tagline">Workout Catalog</span>
+                    <h2 class="section-title">คลังท่าออกกำลังกายพาเพลิน</h2>
+                    <p class="section-desc">เริ่มต้นสุขภาพดีอย่างง่ายดายด้วยท่าออกกำลังกายจากผู้เชี่ยวชาญ คัดสรรมาแล้วว่าทำตามได้ทันที ไม่ต้องใช้อุปกรณ์เยอะ</p>
+                </div>
+
+                <!-- Workout Filters -->
+                <div class="workout-filters">
+                    <button class="filter-btn active" data-filter="all" id="filter-all">
+                        <i class="fa-solid fa-border-all"></i> ทั้งหมด
+                    </button>
+                    <button class="filter-btn" data-filter="cardio" id="filter-cardio">
+                        <i class="fa-solid fa-heart-circle-bolt"></i> คาร์ดิโอ (เบิร์นไขมัน)
+                    </button>
+                    <button class="filter-btn" data-filter="strength" id="filter-strength">
+                        <i class="fa-solid fa-dumbbell"></i> เพิ่มกล้ามเนื้อ
+                    </button>
+                    <button class="filter-btn" data-filter="yoga" id="filter-yoga">
+                        <i class="fa-solid fa-person-yoga"></i> ยืดหยุ่น & โยคะ
+                    </button>
+                </div>
+
+                <!-- Workouts Grid -->
+                <div class="workout-grid" id="workout-grid">
+                    <!-- Exercise cards will be dynamically loaded via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Health Tips Section -->
+        <section id="tips-section" class="health-tips">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tagline">Health & Knowledge</span>
+                    <h2 class="section-title">เกร็ดความรู้สุขภาพดี</h2>
+                    <p class="section-desc">อ่านเคล็ดลับการใช้ชีวิตและการดูแลสุขภาพง่ายๆ เพื่อเพิ่มประสิทธิภาพการออกกำลังกายของคุณ</p>
+                </div>
+
+                <div class="tips-grid">
+                    <!-- Tip Card 1 -->
+                    <article class="tip-card">
+                        <div class="tip-image-placeholder tip-1-bg">
+                            <i class="fa-solid fa-temperature-arrow-up"></i>
+                        </div>
+                        <div class="tip-content">
+                            <div class="tip-meta"><i class="fa-regular fa-clock"></i> อ่าน 3 นาที | ออกกำลังกาย</div>
+                            <h4 class="tip-title">ทำไมการวอร์มอัพ 5-10 นาทีถึงห้ามละเลย?</h4>
+                            <p class="tip-excerpt">การอบอุ่นร่างกายหรือวอร์มอัพช่วยเพิ่มอุณหภูมิร่างกาย ยืดหยุ่นเส้นเอ็น และเตรียมหัวใจให้พร้อมทำงาน ป้องกันการบาดเจ็บของกล้ามเนื้อได้อย่างมีนัยสำคัญ</p>
+                            <a href="#" class="tip-link" onclick="event.preventDefault();">อ่านต่อ <i class="fa-solid fa-arrow-right-long"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Tip Card 2 -->
+                    <article class="tip-card">
+                        <div class="tip-image-placeholder tip-2-bg">
+                            <i class="fa-solid fa-glass-water"></i>
+                        </div>
+                        <div class="tip-content">
+                            <div class="tip-meta"><i class="fa-regular fa-clock"></i> อ่าน 2 นาที | โภชนาการ</div>
+                            <h4 class="tip-title">จิบน้ำระหว่างออกกำลังกาย: ดื่มแค่ไหนถึงดี?</h4>
+                            <p class="tip-excerpt">การขาดน้ำทำให้สมรรถภาพการทำกิจกรรมลดลงถึง 20% ควรจิบน้ำสะอาดประมาณ 150-200 มล. ทุกๆ 15-20 นาทีในขณะฝึกซ้อม ไม่ควรดื่มรวดเดียวเยอะๆ เพราะจะทำให้จุกได้</p>
+                            <a href="#" class="tip-link" onclick="event.preventDefault();">อ่านต่อ <i class="fa-solid fa-arrow-right-long"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Tip Card 3 -->
+                    <article class="tip-card">
+                        <div class="tip-image-placeholder tip-3-bg">
+                            <i class="fa-solid fa-bed"></i>
+                        </div>
+                        <div class="tip-content">
+                            <div class="tip-meta"><i class="fa-regular fa-clock"></i> อ่าน 4 นาที | การฟื้นฟู</div>
+                            <h4 class="tip-title">นอนหลับให้เพียงพอ หัวใจสำคัญของความฟิต</h4>
+                            <p class="tip-excerpt">กล้ามเนื้อไม่ได้เติบโตระหว่างยกเวทหรือวิ่ง แต่เกิดขึ้นตอนนอนหลับลึก ร่างกายจะหลั่งโกรทฮอร์โมน (Growth Hormone) ออกมาซ่อมแซมส่วนที่สึกหรอ การนอน 7-8 ชั่วโมงจึงห้ามมองข้าม</p>
+                            <a href="#" class="tip-link" onclick="event.preventDefault();">อ่านต่อ <i class="fa-solid fa-arrow-right-long"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <i class="fa-solid fa-dumbbell logo-icon"></i>
+                    <span class="logo-text">ออกกำลังกาย<span>พาเพลิน</span></span>
+                </a>
+                <p>เรามุ่งมั่นที่จะช่วยให้ทุกคนมีสุขภาพร่างกายที่ดี ร่างกายแข็งแรง มีความสุขและสนุกสนานไปกับการเคลื่อนไหวร่างกายในทุกๆ วัน</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" onclick="event.preventDefault();"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="social-link" onclick="event.preventDefault();"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link" onclick="event.preventDefault();"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="social-link" onclick="event.preventDefault();"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>เมนู</h4>
+                <ul>
+                    <li><a href="#hero-section">หน้าแรก</a></li>
+                    <li><a href="#bmi-section">คำนวณ BMI</a></li>
+                    <li><a href="#workout-section">คลังท่าออกกำลังกาย</a></li>
+                    <li><a href="#tips-section">เกร็ดความรู้</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>ติดต่อสอบถาม</h4>
+                <p><i class="fa-solid fa-envelope"></i> contact@fitphaploen.com</p>
+                <p><i class="fa-solid fa-phone"></i> 02-123-4567</p>
+                <p><i class="fa-solid fa-location-dot"></i> กรุงเทพมหานคร ประเทศไทย</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 ออกกำลังกายพาเพลิน. All Rights Reserved. สร้างสรรค์เพื่อคนรักสุขภาพ</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Workout Timer Modal -->
+    <div class="modal-backdrop" id="timer-modal">
+        <div class="modal-card">
+            <button class="modal-close" id="modal-close-btn">&times;</button>
+            <div class="modal-body text-center">
+                <span class="modal-tag" id="timer-exercise-category">CARDIO</span>
+                <h3 class="modal-title" id="timer-exercise-title">ท่าออกกำลังกาย</h3>
+                <p class="modal-subtitle" id="timer-exercise-subtitle">ตั้งสมาธิและเริ่มเคลื่อนไหวเมื่อตัวจับเวลาทำงาน</p>
+                
+                <!-- Timer Ring Display -->
+                <div class="timer-visual-container">
+                    <svg class="timer-svg" viewBox="0 0 160 160">
+                        <circle class="timer-track" cx="80" cy="80" r="70"></circle>
+                        <circle class="timer-progress" id="timer-progress-circle" cx="80" cy="80" r="70"></circle>
+                    </svg>
+                    <div class="timer-time" id="timer-time-display">00:30</div>
+                </div>
+
+                <div class="timer-status-text" id="timer-status-text">พร้อมใช้งาน</div>
+
+                <!-- Interactive controls -->
+                <div class="timer-controls">
+                    <button class="btn btn-circle btn-neutral" id="btn-timer-reset" title="รีเซ็ต">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                    <button class="btn btn-circle btn-primary btn-large" id="btn-timer-play" title="เล่น/หยุด">
+                        <i class="fa-solid fa-play" id="timer-play-icon"></i>
+                    </button>
+                    <button class="btn btn-circle btn-neutral" id="btn-timer-stop" title="เสร็จสิ้น">
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+                </div>
+
+                <!-- Custom Sound Notification Trigger (Audio API Beep is used to prevent external file dependencies) -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="app.js"></script>
+</body>
+</html>
